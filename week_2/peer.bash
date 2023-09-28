@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 
 # Storyline: Create peer VPN configuration file
 
@@ -88,3 +88,4 @@ AllowedIPs = 10.254.132.100/32
 # ${the_client} end
 " | tee -a wg0.conf
 
+cp "wg0.conf" "/etc/wireguard/"

@@ -1,6 +1,23 @@
-
 #!/bin/bash
+pFile="wg0.conf"
+if [[ -f "${pFile}" ]]
+then
+	echo "The file ${pFile} already exists."
+	echo "Do you want to overwrite it? [y|n]"
+	read to_overwrite
 
+	if [[ "${to_overwrite}" == "N" || "${to_overwrite}" == "" || "${to_overwrite}" == "n" ]]
+	then
+		echo "Exiting.."
+		exit 0
+	elif [[ "${to_overwrite}" == "y" || "${to_overwrite}" == "Y" ]]
+	then
+		echo "Creating the wireguard configuration file..."
+	else
+		echo "Invalid value"
+		exit 1
+	fi
+fi
 # Storyline: Script to create a wireguard server
 # Create a private key
 p="$(wg genkey)"
