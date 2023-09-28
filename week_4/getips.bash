@@ -3,14 +3,12 @@
 # Update your script to count the IP addresses and
 # only print unique entries
 
-accessFile = "$(var/log/apache2/access.log)"
+accessFile="/var/log/apache2/access.log.1"
 
-function accessAndReadIps()
-{
-	if [[-f "${accessFile}"]]
-	then
-        	while -r line
-        	do
-                	# Read and get ips here
-        	done
-}
+#function accessAndReadIps()
+#{
+       cat "${accessFile}" | grep -o -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | sort | uniq -c
+      #  cat "${accessFile}"
+#}
+
+#accessAndReadIps()
